@@ -7,8 +7,9 @@
         <field name="inherit_id" ref="base.view_users_form"/>
         <field name="arch" type="xml">
             <xpath expr="//div[@class='oe_title']" position="after">
-                <group>
-                    <field name="max_login_time" string="Login Time in Min"/>
+                <group string="Custom Log-out">
+                    <field name="enable_time_logout" string="Enable auto Logout"/>
+                    <field name="max_login_time" string="Login Time in Min" invisible="not enable_time_logout" />
                 </group>
             </xpath>
         </field>
