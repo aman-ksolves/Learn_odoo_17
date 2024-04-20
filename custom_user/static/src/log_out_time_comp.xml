@@ -3,8 +3,8 @@
     <t t-name="custom_user.LogOutTimeComp">
         <div class="o-dropdown dropdown">
             <i class="fa fa-clock-o systray-icon" />
-            Count:
-            <p t-out="state.count" class="ml-2" />
+            T-sec:
+            <span t-out="state.count" class="ml-2" />
         </div>
     </t>
 </templates>

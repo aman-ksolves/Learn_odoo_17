@@ -9,7 +9,7 @@
             <xpath expr="//div[@class='oe_title']" position="after">
                 <group string="Custom Log-out">
                     <field name="enable_time_logout" string="Enable auto Logout"/>
-                    <field name="max_login_time" string="Login Time in Min" invisible="not enable_time_logout" />
+                    <field name="max_login_time" string="Login Time in Seconds" invisible="not enable_time_logout" widget="float_time" />
                 </group>
             </xpath>
         </field>
