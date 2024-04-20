@@ -1,37 +1,40 @@
 /** @odoo-module **/
 
-
+import { Component,useState,onWillStart } from "@odoo/owl";
 import { registry } from "@web/core/registry";
+import { useService } from "@web/core/utils/hooks";
+
+class LogOutTimeComp extends Component{
+    static template = 'custom_user.LogOutTimeComp';
+    setup(){
+        console.log('hello doc',document);
+        this.state = useState({count:0});
+        this.orm = useService("orm");
+        this.rpc = useService("rpc");
+        onWillStart(async () => {
+             const result = await this.rpc("/get_user_time/timer");
+             this.state.countUpTo = result;
+        });
 
 
-class LogOutService {
-    constructor(orm) {
+        console.log('hello doc END',document);
+        setInterval(()=>{
+            this.state.count ++;
+            this.checkCount();
+        },1000);
 
-        this.orm = orm;
-        this.time = this.getTime().then((data)=>data);
-        debugger;
-        console.log('hello',this.time)
-    }
-
-        async getTime() {
-            const res = await this.orm.call('res.users', 'get_logout_time');
-            return res;
+        document.onmousemove = ()=>{
+            console.log('mouse move')
+            this.state.count = 0;
         }
+    }
+    checkCount(){
+        if(this.state.count == this.state.countUpTo){
+             location.replace("/web/session/logout")
+        }
+    }
 
 }
 
-
-export const logOutService = {
-    dependencies: ["orm"],
-    async: [
-        "getTime",
-    ],
-    start(env, { orm}) {
-        return new LogOutService(orm);
-    }
-};
-
-registry.category("services").add("logOutService", logOutService);
-//setTimeout(()=>{
-//     location.replace("/web/session/logout")
-//}, 2000);
+registry.category('systray')
+        .add('custom_user.LogOutTimeComp', {Component:LogOutTimeComp},{sequence:25})
