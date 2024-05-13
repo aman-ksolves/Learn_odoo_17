@@ -11,6 +11,7 @@ class LogOutTimeComp extends Component{
         this.state = useState({count:0});
         this.orm = useService("orm");
         this.rpc = useService("rpc");
+        this.effect = useService("effect");
         onWillStart(async () => {
              const result = await this.rpc("/get_user_time/timer");
              this.state.countUpTo = result;
@@ -21,6 +22,13 @@ class LogOutTimeComp extends Component{
         setInterval(()=>{
             this.state.count ++;
             this.checkCount();
+//            if(this.state.count === 5){
+//                this.effect.add({
+//                    type:"rainbow_man",
+//                    message:"Count is 5",
+//
+//                })
+//            }
         },1000);
 
         document.onmousemove = ()=>{

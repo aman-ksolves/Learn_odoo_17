@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+ <t t-inherit="web.SwitchCompanyMenu" t-inherit-mode="extension">
+        <xpath expr="//t[@t-set-slot='toggler']" position="after">
+            <div class="d-flex">
+                <button class="btn btn-primary btn-sm m-3 ml-5" t-on-click="selectAll" >Select All</button>
+                <button class="btn btn-secondary btn-sm m-3 ml-5" t-on-click="deselectAll" >Deselect All</button>
+            </div>
+        </xpath>
+    </t>
+</templates>
