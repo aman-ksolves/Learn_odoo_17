@@ -2,10 +2,25 @@
 <templates xml:space="preserve">
  <t t-inherit="web.SwitchCompanyMenu" t-inherit-mode="extension">
         <xpath expr="//t[@t-set-slot='toggler']" position="after">
-            <div class="d-flex">
+            <div class="pe-2">
+                <div class="input-group m-2 mr-3 mb-0 w-100" >
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"/></span>
+                    <input type="text" id="companySearchBox" t-on-keyup="onKeyUpFunction" class="form-control" placeholder="Search Company" />
+                </div>
+            </div>
+            <div class="d-flex justify-content-around">
                 <button class="btn btn-primary btn-sm m-3 ml-5" t-on-click="selectAll" >Select All</button>
                 <button class="btn btn-secondary btn-sm m-3 ml-5" t-on-click="deselectAll" >Deselect All</button>
             </div>
+        </xpath>
+
+        <xpath expr="//t[@t-key='company.id']" position="replace">
+            <t t-foreach="Object.values(companyService.allowedCompaniesWithAncestors)
+                           .filter((c) => (!c.parent_id &amp;&amp; (!inputValue.name || c.name.toLowerCase().includes(inputValue.name.toLowerCase()))))
+                          .sort((c1, c2) => c1.sequence - c2.sequence)
+                         " t-as="company" t-key="company.id">
+                <SwitchCompanyItem company="company" level="0"/>
+            </t>
         </xpath>
     </t>
 </templates>
