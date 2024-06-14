@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
+    <record id="sequence_default_code" model="ir.sequence">
+            <field name="name">Default Code</field>
+            <field name="code">custom_user.code</field>
+            <field name="prefix">DT/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+     </record>
      <record id="res_users_form_view_inherit" model="ir.ui.view">
         <field name="name">res.users.form.view.inherit</field>
         <field name="model">res.users</field>
@@ -14,6 +21,7 @@
             </xpath>
         </field>
     </record>
+
 
 
 </odoo>

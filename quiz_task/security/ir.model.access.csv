@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+quiz_task.access_quiz_quiz,access_quiz_quiz,quiz_task.model_quiz_quiz,base.group_user,1,1,1,1
+quiz_task.access_quiz_question,access_quiz_question,quiz_task.model_quiz_question,base.group_user,1,1,1,1
+quiz_task.access_quiz_answer,access_quiz_answer,quiz_task.model_quiz_answer,base.group_user,1,1,1,1

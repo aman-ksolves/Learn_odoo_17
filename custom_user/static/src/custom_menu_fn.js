@@ -1,12 +1,23 @@
 /* @odoo-module */
-import { useState } from "@odoo/owl";
+import { useState, onMounted } from "@odoo/owl";
 import { patch } from "@web/core/utils/patch";
 import { SwitchCompanyMenu} from "@web/webclient/switch_company_menu/switch_company_menu";
 
 patch(SwitchCompanyMenu.prototype, {
     setup() {
         super.setup(...arguments);
-        this.inputValue = useState({ name : ""});
+        this.inputValue = useState({ name : "", once: true});
+        debugger;
+//        setTimeout(()=>{
+//            this.selectAll();
+//        },1000)
+//        if(this.inputValue.once){
+//            this.inputValue.once = false
+//            this.selectAll();
+//        }
+//        this.selectAll();
+//        console.log('run setup')
+
       },
     selectAll(){
         for (let companyId in this.companyService.allowedCompanies){
