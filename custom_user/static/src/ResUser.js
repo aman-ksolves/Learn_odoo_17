@@ -31,10 +31,10 @@ class LogOutTimeComp extends Component{
 //            }
         },1000);
 
-        document.onmousemove = ()=>{
-            console.log('mouse move')
-            this.state.count = 0;
-        }
+//        document.onmousemove = ()=>{
+//            console.log('mouse move')
+//            this.state.count = 0;
+//        }
     }
     checkCount(){
         if(this.state.count == this.state.countUpTo){

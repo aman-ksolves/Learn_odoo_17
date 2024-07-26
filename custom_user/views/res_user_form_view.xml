@@ -22,6 +22,25 @@
         </field>
     </record>
 
+     <record id="menu_blog_1" model="website.menu">
+            <field name="name">Blog Aman</field>
+            <field name="url">/blog</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">41</field>
+        </record>
 
+<!--    custom button in foem view-->
+
+
+   <record id="view_sale_order_form_inherit" model="ir.ui.view">
+       <field name="name">sale.order</field>
+       <field name="model">sale.order</field>
+       <field name="inherit_id" ref="sale.view_order_form"/>
+       <field name="arch" type="xml">
+           <xpath expr="//form" position="attributes">
+               <attribute name="js_class">model_info</attribute>
+           </xpath>
+       </field>
+   </record>
 
 </odoo>
