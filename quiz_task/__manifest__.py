@@ -6,7 +6,7 @@
     'version': '17.0',
     'application': True,
     'installable': True,
-    'depends': ['product'],
+    'depends': ['product','contacts'],
     'data': [
         'security/ir.model.access.csv',
         'views/quiz_view.xml',

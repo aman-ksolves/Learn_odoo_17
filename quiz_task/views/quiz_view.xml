@@ -8,6 +8,7 @@
                <sheet>
                    <group>
                        <field name="name" />
+
                        <field name="question_list"/>
 <!--                           <tree >-->
 <!--                               <field name="question" />-->
@@ -34,7 +35,8 @@
            <form>
                <sheet>
                    <group>
-
+                        <field name="partner_id" />
+                       <field name="partner_id2" context="{'custom_name': True}"/>
                        <field name="quiz_id" />
                        <field name="question" />
                        <field name="answer_list" >
