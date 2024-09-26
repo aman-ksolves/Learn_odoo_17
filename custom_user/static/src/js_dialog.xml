@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+   <t t-name="blog_js_class.infoDialog">
+       <Dialog size="'md'" title="'Model Info'" modalRef="modalRef">
+           <div class="">
+               <h6>Model:</h6>
+               <span>
+                   <t t-esc="props.resModel"/>
+               </span><br/>
+               <h6>Description:</h6>
+               <span>
+                   <t t-esc="props.resDesc"/>
+               </span>
+           </div>
+           <t t-set-slot="footer">
+               <button class="btn" t-att-class="props.confirmClass"
+                       t-on-click="clickClose" t-esc="props.confirmLabel"/>
+           </t>
+       </Dialog>
+   </t>
+</templates>

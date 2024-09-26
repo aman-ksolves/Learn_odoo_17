@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+     <record id="quiz_form_view" model="ir.ui.view">
+        <field name="name">quiz.form.view</field>
+        <field name="model">quiz.quiz</field>
+        <field name="arch" type="xml">
+           <form>
+               <sheet>
+                   <group>
+                       <field name="name" />
+
+                       <field name="question_list"/>
+<!--                           <tree >-->
+<!--                               <field name="question" />-->
+<!--                           </tree>-->
+<!--                       </field>-->
+                   </group>
+               </sheet>
+           </form>
+        </field>
+    </record>
+    <record id="quiz_tree_view" model="ir.ui.view">
+        <field name="name">quiz.tree.view</field>
+        <field name="model">quiz.quiz</field>
+        <field name="arch" type="xml">
+           <tree >
+                   <field name="name" />
+           </tree>
+        </field>
+    </record>
+    <record id="quiz_question_form_view" model="ir.ui.view">
+        <field name="name">quiz.question.form.view</field>
+        <field name="model">quiz.question</field>
+        <field name="arch" type="xml">
+           <form>
+               <sheet>
+                   <group>
+                        <field name="partner_id" />
+                       <field name="partner_id2" context="{'custom_name': True}"/>
+                       <field name="quiz_id" />
+                       <field name="question" />
+                       <field name="answer_list" >
+                           <tree editable="bottom">
+                               <field name="description" />
+                               <field name="product_id" />
+                           </tree>
+                           <form>
+                               <field name="description" />
+                               <field name="product_id" />
+                           </form>
+                       </field>
+                   </group>
+               </sheet>
+           </form>
+        </field>
+    </record>
+    <record id="quiz_question_tree_view" model="ir.ui.view">
+        <field name="name">quiz.question.tree.view</field>
+        <field name="model">quiz.question</field>
+        <field name="arch" type="xml">
+           <tree >
+                   <field name="question" />
+           </tree>
+        </field>
+    </record>
+
+    <record id="quiz_answer_form_view" model="ir.ui.view">
+        <field name="name">quiz.answer.form.view</field>
+        <field name="model">quiz.answer</field>
+        <field name="arch" type="xml">
+           <form>
+               <sheet>
+                   <group>
+
+                       <field name="description" />
+                       <field name="product_id" />
+                       <field name="question_id" />
+                   </group>
+               </sheet>
+           </form>
+        </field>
+    </record>
+    <record id="quiz_answer_tree_view" model="ir.ui.view">
+        <field name="name">quiz.answer.tree.view</field>
+        <field name="model">quiz.answer</field>
+        <field name="arch" type="xml">
+           <tree editable="bottom">
+                   <field name="description" />
+                   <field name="product_id" />
+           </tree>
+        </field>
+    </record>
+
+
+
+     <record model="ir.actions.act_window" id="action_quiz">
+        <field name="name">Quiz</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">quiz.quiz</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     <record model="ir.actions.act_window" id="action_quiz_question">
+        <field name="name">Quiz Question</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">quiz.question</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     <record model="ir.actions.act_window" id="action_quiz_answer">
+        <field name="name">Quiz Answer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">quiz.answer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="quiz_quiz_menu" name="Quiz" action="action_quiz">
+        <menuitem id="quiz_question_menu" name="Question" action="action_quiz_question"/>
+        <menuitem id="quiz_answer_menu" name="Answer" action="action_quiz_answer"/>
+    </menuitem>
+
+</odoo>
